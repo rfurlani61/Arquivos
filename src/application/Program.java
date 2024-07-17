@@ -19,7 +19,11 @@ public class Program {
 			System.out.println("Error: " + e.getMessage());
 		}
 		finally {
-			sc.close();11
+			if (sc != null) {
+				sc.close(); 
+				// Se ocorreu uma exceção o Scanner não foi instanciado e se tentassemos fechar teríamos um
+				// NULL.EXCEPTION, então temos de testar se o Scanner foi ou não instanciado antes de fechá-lo.
+			}
 		}
 	}
 }
